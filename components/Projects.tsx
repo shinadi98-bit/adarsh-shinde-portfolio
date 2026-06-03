@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, ChevronRight, AlertCircle } from "lucide-react";
-import { projects } from "@/data/profile";
+import { projects, profileTracks } from "@/data/profile";
 
 /* ── Dark CSS mock previews ── */
 
@@ -213,10 +213,29 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 }
 
 /* ── Main ── */
-export default function Projects() {
+interface ProjectsProps {
+  activeTrack?: string | null;
+}
+
+export default function Projects({ activeTrack }: ProjectsProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const [selected, setSelected] = useState<Project | null>(null);
+
+  const track = profileTracks.find((t) => t.id === activeTrack);
+  const matchedIds = track?.projectIds ?? [];
+
+  const getWrapperClass = (id: string) => {
+    if (!activeTrack) return "";
+    if (matchedIds.includes(id)) return "";
+    return "opacity-35";
+  };
+
+  const getCardBorder = (id: string, s: typeof scheme[string]) => {
+    if (!activeTrack) return `${s.border} ${s.glow}`;
+    if (matchedIds.includes(id)) return `${s.border} ring-1 ring-white/10 ${s.glow}`;
+    return "border-white/5";
+  };
 
   return (
     <section id="projects" className="py-24 px-6 bg-[#080B12]">
@@ -238,32 +257,41 @@ export default function Projects() {
                 key={project.id}
                 initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                onClick={() => setSelected(project)}
-                className={`group rounded-2xl border bg-white/[0.02] hover:bg-white/[0.04] hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden flex flex-col hover:shadow-xl ${s.border} ${s.glow}`}
+                className={`transition-opacity duration-300 ${getWrapperClass(project.id)}`}
               >
-                <div className="p-4 pb-0"><ProjectPreview id={project.id} /></div>
-
-                <div className="p-5 flex flex-col flex-1">
-                  <span className={`self-start inline-flex items-center px-2.5 py-0.5 rounded-full border text-[10px] font-medium mb-3 ${s.badge}`}>
-                    {project.type}
-                  </span>
-                  <h3 className={`text-white text-lg font-bold mb-1 transition-colors duration-150 group-hover:${s.accent.replace("text-", "text-")}`}>
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs mb-3">{project.subtitle}</p>
-                  <p className="text-slate-400 text-sm leading-relaxed flex-1">
-                    {project.description.length > 140 ? project.description.slice(0, 140) + "…" : project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mt-4">
-                    {project.skills.slice(0, 3).map((sk) => (
-                      <span key={sk} className={`text-[10px] px-2 py-0.5 rounded-full ${s.tag}`}>{sk}</span>
-                    ))}
-                    {project.skills.length > 3 && (
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-slate-500">+{project.skills.length - 3}</span>
-                    )}
+                {activeTrack && matchedIds.includes(project.id) && (
+                  <div className={`inline-flex items-center gap-1.5 text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2 ${s.badge}`}>
+                    Relevant for this track
                   </div>
-                  <div className={`mt-4 flex items-center gap-1 text-xs font-medium ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-150`}>
-                    View details <ChevronRight size={12} className="group-hover:translate-x-1 transition-transform duration-150" />
+                )}
+                <div
+                  onClick={() => setSelected(project)}
+                  className={`group rounded-2xl border bg-white/[0.02] hover:bg-white/[0.04] hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden flex flex-col hover:shadow-xl ${getCardBorder(project.id, s)}`}
+                >
+                  <div className="p-4 pb-0"><ProjectPreview id={project.id} /></div>
+
+                  <div className="p-5 flex flex-col flex-1">
+                    <span className={`self-start inline-flex items-center px-2.5 py-0.5 rounded-full border text-[10px] font-medium mb-3 ${s.badge}`}>
+                      {project.type}
+                    </span>
+                    <h3 className="text-white text-lg font-bold mb-1 transition-colors duration-150 group-hover:text-cyan-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-slate-500 text-xs mb-3">{project.subtitle}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed flex-1">
+                      {project.description.length > 140 ? project.description.slice(0, 140) + "…" : project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {project.skills.slice(0, 3).map((sk) => (
+                        <span key={sk} className={`text-[10px] px-2 py-0.5 rounded-full ${s.tag}`}>{sk}</span>
+                      ))}
+                      {project.skills.length > 3 && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-slate-500">+{project.skills.length - 3}</span>
+                      )}
+                    </div>
+                    <div className={`mt-4 flex items-center gap-1 text-xs font-medium ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-150`}>
+                      View details <ChevronRight size={12} className="group-hover:translate-x-1 transition-transform duration-150" />
+                    </div>
                   </div>
                 </div>
               </motion.div>

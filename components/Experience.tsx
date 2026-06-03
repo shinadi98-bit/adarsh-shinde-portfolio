@@ -3,16 +3,29 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Calendar, Briefcase } from "lucide-react";
-import { experiences } from "@/data/profile";
+import { experiences, profileTracks } from "@/data/profile";
 
 const typeColor: Record<string, string> = {
   Internship: "bg-cyan-500/10 text-cyan-400 border-cyan-500/25",
   "Full-time": "bg-teal-500/10 text-teal-400 border-teal-500/25",
 };
 
-export default function Experience() {
+interface Props {
+  activeTrack?: string | null;
+}
+
+export default function Experience({ activeTrack }: Props) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const track = profileTracks.find((t) => t.id === activeTrack);
+  const matchedIds = track?.experienceIds ?? [];
+
+  const getCardClass = (id: string) => {
+    if (!activeTrack) return "border-white/8 bg-white/[0.03] hover:border-cyan-500/20 hover:bg-white/[0.05]";
+    if (matchedIds.includes(id)) return "border-cyan-500/40 bg-cyan-500/[0.04] ring-1 ring-cyan-500/20";
+    return "border-white/5 bg-white/[0.01] opacity-40";
+  };
 
   return (
     <section id="experience" className="py-24 px-6 bg-[#05070A]">
@@ -34,13 +47,18 @@ export default function Experience() {
                 key={exp.id}
                 initial={{ opacity: 0, x: -16 }} animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.13 }}
-                className="relative"
+                className="relative transition-opacity duration-300"
               >
                 <div className="absolute -left-9 md:-left-14 top-4 w-5 h-5 rounded-full bg-[#05070A] border-2 border-cyan-500/60 flex items-center justify-center shadow-lg shadow-cyan-500/10">
                   <div className="w-2 h-2 rounded-full bg-cyan-400" />
                 </div>
 
-                <div className="group rounded-2xl border border-white/8 bg-white/[0.03] p-6 hover:border-cyan-500/20 hover:bg-white/[0.05] hover:-translate-y-0.5 transition-all duration-200">
+                <div className={`group rounded-2xl border p-6 hover:-translate-y-0.5 transition-all duration-200 ${getCardClass(exp.id)}`}>
+                  {activeTrack && matchedIds.includes(exp.id) && (
+                    <div className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded-full mb-3">
+                      Relevant for this track
+                    </div>
+                  )}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                     <div>
                       <h3 className="text-white font-semibold text-lg leading-tight group-hover:text-cyan-300 transition-colors duration-150">

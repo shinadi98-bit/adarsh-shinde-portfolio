@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Download, TrendingUp, Database, BookOpen, Cpu } from "lucide-react";
-import { resumeVersions } from "@/data/profile";
+import { resumeVersions, profileTracks } from "@/data/profile";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   TrendingUp, Database, BookOpen, Cpu,
@@ -50,9 +50,16 @@ const colorScheme: Record<string, {
   },
 };
 
-export default function ResumeVersions() {
+interface Props {
+  activeTrack?: string | null;
+}
+
+export default function ResumeVersions({ activeTrack }: Props) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const track = profileTracks.find((t) => t.id === activeTrack);
+  const matchedResumeId = track?.resumeId ?? null;
 
   return (
     <section id="resumes" className="py-24 px-6 bg-[#05070A]">
@@ -78,13 +85,27 @@ export default function ResumeVersions() {
           {resumeVersions.map((rv, i) => {
             const s = colorScheme[rv.color] ?? colorScheme.cyan;
             const Icon = iconMap[rv.icon] ?? TrendingUp;
+            const isMatch = matchedResumeId === rv.id;
+            const isDimmed = activeTrack && !isMatch;
             return (
               <motion.div
                 key={rv.id}
                 initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`group rounded-2xl border bg-white/[0.02] p-6 hover:bg-white/[0.04] hover:-translate-y-0.5 transition-all duration-200 hover:shadow-xl ${s.border} ${s.glow} flex flex-col`}
+                className={`transition-opacity duration-300 ${isDimmed ? "opacity-35" : ""}`}
               >
+              <div
+                className={`group rounded-2xl border bg-white/[0.02] p-6 hover:bg-white/[0.04] hover:-translate-y-0.5 transition-all duration-200 hover:shadow-xl flex flex-col ${
+                  isMatch ? `${s.border} ring-2 ring-offset-0 shadow-xl ${s.glow}` : s.border
+                } ${s.glow}`}
+              >
+                {/* Recommended badge */}
+                {isMatch && (
+                  <div className={`self-start inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full mb-3 ${s.badge} border ${s.border}`}>
+                    Recommended for this track
+                  </div>
+                )}
+
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`p-2.5 rounded-xl shrink-0 ${s.iconBg}`}>
@@ -133,6 +154,7 @@ export default function ResumeVersions() {
                 >
                   <Download size={15} /> Download PDF
                 </a>
+              </div>
               </motion.div>
             );
           })}

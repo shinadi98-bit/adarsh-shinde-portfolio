@@ -40,15 +40,20 @@ export default function About() {
               <p key={i}>{para}</p>
             ))}
 
-            <div className="grid grid-cols-3 gap-3 pt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 pt-4">
               {[
-                { value: "Rs.350Cr+", label: "AUM Advisory"   },
-                { value: "200+",      label: "SAP Incidents"  },
-                { value: "150+",      label: "Clients Managed"},
+                { value: "Rs.350Cr+", label: "AUM Advisory",    span: false },
+                { value: "200+",      label: "SAP Incidents",   span: false },
+                { value: "150+",      label: "Clients Managed", span: true  },
               ].map((stat) => (
-                <div key={stat.label} className="rounded-xl border border-white/8 bg-white/[0.03] p-4 text-center">
-                  <div className="text-xl font-bold text-white">{stat.value}</div>
-                  <div className="text-xs text-slate-600 mt-1">{stat.label}</div>
+                <div
+                  key={stat.label}
+                  className={`rounded-xl border border-white/8 bg-white/[0.03] p-3 sm:p-4 text-center min-w-0 ${
+                    stat.span ? "col-span-2 sm:col-span-1" : ""
+                  }`}
+                >
+                  <div className="text-base sm:text-xl font-bold text-white truncate">{stat.value}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-600 mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>

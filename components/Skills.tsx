@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TrendingUp, Database, Wrench, Cpu, Users } from "lucide-react";
-import { skillGroups } from "@/data/profile";
+import { skillGroups, profileTracks } from "@/data/profile";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   TrendingUp, Database, Wrench, Cpu, Users,
@@ -17,9 +17,16 @@ const palette = [
   { border: "border-slate-500/20",  icon: "text-slate-400  bg-slate-500/10",  chip: "bg-slate-500/8  border-slate-500/20  text-slate-300  hover:bg-slate-500/15"  },
 ];
 
-export default function Skills() {
+interface Props {
+  activeTrack?: string | null;
+}
+
+export default function Skills({ activeTrack }: Props) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const track = profileTracks.find((t) => t.id === activeTrack);
+  const matchedGroups = track?.skillGroups ?? [];
 
   return (
     <section id="skills" className="py-24 px-6 bg-[#080B12]">
@@ -36,12 +43,13 @@ export default function Skills() {
           {skillGroups.map((group, gi) => {
             const Icon = iconMap[group.icon] ?? Cpu;
             const p = palette[gi % palette.length];
+            const isMatch = !activeTrack || matchedGroups.includes(group.label);
             return (
               <motion.div
                 key={group.label}
                 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: gi * 0.09 }}
-                className={`rounded-2xl border ${p.border} bg-white/[0.02] p-6`}
+                className={`rounded-2xl border ${p.border} bg-white/[0.02] p-6 transition-opacity duration-300 ${isMatch ? "" : "opacity-30"}`}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className={`p-2 rounded-lg ${p.icon}`}>
