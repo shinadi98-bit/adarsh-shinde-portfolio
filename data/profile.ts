@@ -1,21 +1,20 @@
 export const profile = {
   name: "Adarsh Shinde",
-  tagline: "Finance Professional Building AI-Enabled Research, Automation & Digital Workflows",
-  subTagline:
-    "MBA Finance · Equity Research · SAP FICO · AI Workflow Automation",
+  tagline: "Finance Professional Building AI-Enabled Research, Automation and Digital Workflows",
+  subTagline: "MBA Finance · Equity Research · SAP FICO · AI Workflow Automation",
   location: "Navi Mumbai, India",
   email: "shinadi98@gmail.com",
   phone: "(+91) 8976480056",
   linkedin: "https://www.linkedin.com/in/adarsh-shinde-26993b228",
-  github: "https://github.com/shinadi98-bit", // Add your GitHub URL here
-  resumeUrl: "/resume.pdf", // Place resume PDF in /public/resume.pdf
-  about: `Finance professional with an MBA Finance background (FLAME University), CA Inter Group I qualification, and hands-on experience across buy-side equity research, SAP FICO consulting, and tax & accounts practice.
+  github: "https://github.com/shinadi98-bit",
+  resumeUrl: "/resume.pdf",
+  about: `Finance professional with an MBA Finance background (FLAME University), CA Inter Group I qualification, and hands-on experience across buy-side equity research, SAP FICO consulting, and tax and accounts practice.
 
-I have covered Indian IT equities for a ₹350+ crore AUM advisory firm, resolved 200+ SAP FI incidents across enterprise ERP implementations, and managed compliance and accounts finalization for 150+ clients.
+I have covered Indian IT equities for a Rs.350+ crore AUM advisory firm, resolved 200+ SAP FI incidents across enterprise ERP implementations, and managed compliance and accounts finalization for 150+ clients.
 
-Beyond core finance, I work comfortably with financial modelling, valuation, ERP systems, Bloomberg, Python, and AI-assisted workflow automation tools — including building and deploying a live algorithmic trading system, authoring a quantitative sentiment analysis research study, and launching a web product using Claude Code-assisted development.
+Beyond core finance, I work comfortably with financial modelling, valuation, ERP systems, Bloomberg, Python, and AI-assisted workflow automation tools, including building and deploying a live algorithmic trading system, authoring a quantitative sentiment analysis research study, and launching a web product using Claude Code-assisted development.
 
-My goal is to bring rigorous financial domain knowledge together with practical automation and analytical execution — for roles in fintech, investment research, financial analysis, business analysis, or AI-adjacent finance operations.`,
+My goal is to bring rigorous financial domain knowledge together with practical automation and analytical execution, for roles in fintech, investment research, financial analysis, business analysis, or AI-adjacent finance operations.`,
 };
 
 export const experiences = [
@@ -27,7 +26,7 @@ export const experiences = [
     location: "Pune",
     type: "Internship",
     bullets: [
-      "Covered 6 Indian IT companies for a ₹350+ crore AUM equity advisory firm",
+      "Covered 6 Indian IT companies for a Rs.350+ crore AUM equity advisory firm",
       "Built financial models and ran DCF and comparable company analysis across coverage universe",
       "Analyzed financial statements, macro indicators, sector trends, sell-side reports, and consensus estimates",
       "Presented investment findings using Excel and Tableau to support portfolio decision-making",
@@ -35,7 +34,7 @@ export const experiences = [
   },
   {
     id: "hcl",
-    title: "Associate Consultant — SAP FICO",
+    title: "Associate Consultant, SAP FICO",
     company: "HCL Technologies Ltd.",
     period: "Feb 2022 – Dec 2023",
     location: "Hyderabad",
@@ -49,8 +48,8 @@ export const experiences = [
   },
   {
     id: "lahoti",
-    title: "Senior Tax & Accounts Assistant",
-    company: "SK Lahoti & Co",
+    title: "Senior Tax and Accounts Assistant",
+    company: "SK Lahoti and Co",
     period: "Jul 2019 – Jan 2022",
     location: "Navi Mumbai",
     type: "Full-time",
@@ -68,32 +67,30 @@ export const projects = [
     id: "drivers",
     title: "DRIVERS",
     subtitle: "LLM-Based Investor Sentiment Analysis",
-    type: "MBA Research Project",
+    type: "AI Finance Research",
     tags: ["AI + Finance", "Quantitative Research"],
     description:
-      "Designed a quantitative research study analyzing 148,000+ stock-day observations across BSE Sensex 30 and Dow Jones 30 constituents (2015–2024) to evaluate whether LLM-driven sentiment signals could predict equity returns.",
+      "Designed a quantitative AI-finance research study using 148,000+ stock-day observations to evaluate LLM-driven sentiment signals across Indian and US equity markets.",
     highlights: [
-      "148,000+ stock-day observations across two global indices",
-      "FinBERT sentiment scoring on Bloomberg news data",
-      "Integrated Google Trends, Fear/Greed Index, and PSY_14 technical indicator",
-      "Cross-market predictive performance analysis (India vs. US)",
+      "Combined FinBERT, Bloomberg News Sentiment, Google Trends, Fear/Greed Index, and PSY_14",
+      "Compared signals across BSE Sensex 30 and Dow Jones 30 constituents (2015 to 2024)",
+      "Produced research output for investment and academic audiences",
     ],
     skills: ["Python", "FinBERT", "Bloomberg Terminal", "Sentiment Analysis", "Quantitative Research", "Data Analysis"],
-    color: "blue",
+    color: "cyan",
   },
   {
     id: "algo-trading",
     title: "Algorithmic Trading System",
     subtitle: "NSE F&O and Delta Exchange Crypto Futures",
-    type: "Quant / Trading Automation",
+    type: "Trading Automation",
     tags: ["Automation", "Backtesting"],
     description:
-      "Designed, backtested, and deployed an algorithmic trading system for NSE F&O and Delta Exchange crypto futures, incorporating volatility-adjusted trailing stop logic and asset-specific parameter calibration.",
+      "Built and iterated an algorithmic trading workflow across NSE F&O and Delta Exchange crypto futures, focused on signal testing, risk logic, and deployment readiness.",
     highlights: [
-      "VWAP crossover baseline strategy with BOS/CHoCH entry signals",
-      "Multiple backtesting iterations with volatility-adjusted stop logic",
-      "Exchange API integration for live order management",
-      "Deployed on Railway.app with live position monitoring",
+      "Iterated from VWAP crossover to BOS/CHoCH signal logic with volatility-adjusted trailing stop",
+      "Integrated exchange APIs for live order management and position monitoring",
+      "Deployed workflow components on Railway.app for live monitoring and testing",
     ],
     skills: ["Python", "Algorithmic Trading", "Backtesting", "Exchange API", "Cloud Deployment"],
     color: "teal",
@@ -108,12 +105,11 @@ export const projects = [
     tags: ["Web Product", "Claude Code"],
     url: "https://exampack.in",
     description:
-      "Launched ExamPack from prototype to production at exampack.in using a Claude Code-assisted development workflow, translating product requirements into a functional, deployed web experience.",
+      "Launched ExamPack from prototype to live website using a Claude Code-assisted workflow, translating product requirements into a functional web experience.",
     highlights: [
-      "Supabase authentication with callback and password-reset routing",
-      "Redirect URL management across local and production environments",
-      "Deployment configuration and environment-specific debugging",
-      "End-to-end product delivery from requirements to live website",
+      "Translated product requirements into a functional deployed web experience",
+      "Configured Supabase authentication, callback routing, and password reset",
+      "Resolved redirect URL and deployment configuration issues for production launch",
     ],
     skills: ["Claude Code", "Next.js", "Supabase Auth", "AI-Assisted Development", "Deployment Configuration"],
     color: "violet",
@@ -122,7 +118,7 @@ export const projects = [
 
 export const skillGroups = [
   {
-    label: "Finance & Research",
+    label: "Finance and Research",
     icon: "TrendingUp",
     skills: [
       "Financial Modelling",
@@ -137,19 +133,31 @@ export const skillGroups = [
     ],
   },
   {
-    label: "Finance Systems & Compliance",
+    label: "Finance Systems and Compliance",
     icon: "Database",
     skills: [
       "SAP FICO",
       "SAP ERP 6.0",
-      "Tax & Compliance",
+      "Tax and Compliance",
       "Accounts Finalization",
       "GST / TDS / ROC Filings",
       "ERP Systems",
     ],
   },
   {
-    label: "Tools & Technology",
+    label: "AI and Workflow Automation",
+    icon: "Cpu",
+    skills: [
+      "Claude Code",
+      "Relevance AI",
+      "n8n",
+      "AI-Assisted Development",
+      "Workflow Automation",
+      "Digital Productivity Systems",
+    ],
+  },
+  {
+    label: "Tools and Technology",
     icon: "Wrench",
     skills: [
       "Bloomberg",
@@ -163,18 +171,6 @@ export const skillGroups = [
     ],
   },
   {
-    label: "AI & Workflow Automation",
-    icon: "Cpu",
-    skills: [
-      "Claude Code",
-      "Relevance AI",
-      "n8n",
-      "AI-Assisted Development",
-      "Workflow Automation",
-      "Digital Productivity Systems",
-    ],
-  },
-  {
     label: "Collaboration",
     icon: "Users",
     skills: ["Zoom", "Slack", "Microsoft Teams", "Notion", "Remote Collaboration"],
@@ -183,7 +179,7 @@ export const skillGroups = [
 
 export const education = [
   {
-    degree: "MBA — Finance",
+    degree: "MBA Finance",
     institution: "FLAME University",
     location: "Pune",
     period: "2024 – 2026",
@@ -197,7 +193,7 @@ export const education = [
     current: false,
   },
   {
-    degree: "CA Inter — Group I",
+    degree: "CA Inter Group I",
     institution: "ICAI",
     location: "",
     period: "Nov 2018",
@@ -213,29 +209,107 @@ export const education = [
 ];
 
 export const certifications = [
+  { name: "Bloomberg Market Concepts", issuer: "Bloomberg", year: "2025" },
+  { name: "Bloomberg Finance Fundamentals", issuer: "Bloomberg", year: "2025" },
+  { name: "The Complete Investment Banking Course 2025", issuer: "Udemy", year: "2025" },
+  { name: "NISM Research Analyst Series XV", issuer: "NISM", year: "Feb 2025" },
+  { name: "SAP Certified Application Associate", issuer: "SAP", year: "Nov 2021" },
+];
+
+export const resumeVersions = [
   {
-    name: "Bloomberg Market Concepts",
-    issuer: "Bloomberg",
-    year: "2025",
+    id: "investment-research",
+    title: "Investment and Equity Research",
+    roles: ["Equity Research Analyst", "Investment Analyst", "Valuation Analyst", "Research Associate", "Financial Research Analyst"],
+    summary: "Finance-focused resume for roles that need valuation, stock research, market analysis, and AI-enabled research exposure.",
+    strengths: [
+      "Buy-side equity research for a Rs.350+ crore AUM advisory firm",
+      "DCF, comparable company analysis, sector research, and Bloomberg exposure",
+      "LLM-based investor sentiment research across Indian and US markets",
+    ],
+    pdf: "/resumes/Adarsh_Shinde_Resume_Investment_Equity_Research_final.pdf",
+    color: "cyan",
+    icon: "TrendingUp",
   },
   {
-    name: "Bloomberg Finance Fundamentals",
-    issuer: "Bloomberg",
-    year: "2025",
+    id: "sap-fico",
+    title: "SAP FICO and Finance Systems",
+    roles: ["SAP FI Consultant", "SAP FICO Consultant", "ERP Finance Consultant", "Finance Systems Analyst", "SAP Business Analyst"],
+    summary: "Systems-focused resume for roles that need SAP FI knowledge, finance process understanding, UAT, go-live support, and ERP problem-solving.",
+    strengths: [
+      "200+ SAP FI incidents and configuration requests resolved",
+      "GL, Taxation, PCA, Cost Objects, Cost Center, and Project Systems exposure",
+      "UAT, cutover, go-live, SOPs, KT, and cross-functional delivery experience",
+    ],
+    pdf: "/resumes/Adarsh_Shinde_Resume_SAP_FICO_Consulting_final.pdf",
+    color: "teal",
+    icon: "Database",
   },
   {
-    name: "The Complete Investment Banking Course 2025",
-    issuer: "Udemy",
-    year: "2025",
+    id: "core-finance",
+    title: "Core Finance and Compliance",
+    roles: ["Finance Analyst", "FP&A Analyst", "Accounts", "MIS", "Tax", "Compliance", "Finance Operations"],
+    summary: "Traditional finance resume for roles that need accounting, compliance, reporting, reconciliation, and finance operations experience.",
+    strengths: [
+      "Financial statements, accounts finalization, and audit support",
+      "GST, TDS, ROC filings, tax audit reports, and statutory compliance",
+      "150+ clients handled across accounts, tax, reconciliation, and reporting",
+    ],
+    pdf: "/resumes/Adarsh_Shinde_Resume_Core_Finance_final.pdf",
+    color: "gold",
+    icon: "BookOpen",
   },
   {
-    name: "NISM Research Analyst Series XV",
-    issuer: "NISM",
-    year: "Feb 2025",
+    id: "finance-ai",
+    title: "Finance x AI and Automation",
+    roles: ["Fintech Analyst", "AI Finance Analyst", "Finance Automation Analyst", "Product Analyst", "Business Analyst"],
+    summary: "Hybrid resume for roles that need finance domain knowledge with AI-assisted workflows, automation, data analysis, and digital execution.",
+    strengths: [
+      "LLM-based investor sentiment analysis using 148,000+ stock-day observations",
+      "Algorithmic trading workflow across NSE F&O and Delta Exchange crypto futures",
+      "AI-assisted web product launch using Claude Code, Next.js, and Supabase",
+    ],
+    pdf: "/resumes/Adarsh_Shinde_Resume_Finance_AI_Automation_final.pdf",
+    color: "violet",
+    icon: "Cpu",
+  },
+];
+
+export const profileTracks = [
+  {
+    id: "investment-research",
+    title: "Investment Research",
+    icon: "TrendingUp",
+    brings: "Equity coverage, DCF and comps modelling, Bloomberg, and AI-powered sentiment research.",
+    roles: ["Equity Research Analyst", "Investment Analyst", "Valuation Analyst", "Research Associate"],
+    resumeId: "investment-research",
+    color: "cyan",
   },
   {
-    name: "SAP Certified Application Associate",
-    issuer: "SAP",
-    year: "Nov 2021",
+    id: "sap-finance",
+    title: "SAP Finance Systems",
+    icon: "Database",
+    brings: "SAP FICO configuration, ERP finance consulting, UAT, go-live, and process documentation.",
+    roles: ["SAP FI Consultant", "SAP FICO Consultant", "ERP Finance Consultant", "Finance Systems Analyst"],
+    resumeId: "sap-fico",
+    color: "teal",
+  },
+  {
+    id: "core-finance",
+    title: "Core Finance",
+    icon: "BookOpen",
+    brings: "Accounts finalization, tax compliance, statutory audit, GST/TDS/ROC, and 150+ client experience.",
+    roles: ["Finance Analyst", "FP&A Analyst", "Tax and Compliance", "Finance Operations"],
+    resumeId: "core-finance",
+    color: "gold",
+  },
+  {
+    id: "finance-ai",
+    title: "Finance x AI Automation",
+    icon: "Cpu",
+    brings: "AI-enabled research workflows, algorithmic systems, Claude Code-assisted product delivery, and automation.",
+    roles: ["Fintech Analyst", "AI Finance Analyst", "Business Analyst", "Product Analyst"],
+    resumeId: "finance-ai",
+    color: "violet",
   },
 ];

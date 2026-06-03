@@ -10,7 +10,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Adarsh Shinde — Finance, Research & AI Automation",
+  title: "Adarsh Shinde: Finance, Research and AI Automation",
   description:
     "MBA Finance professional with equity research, SAP FICO, and AI workflow automation experience. Based in Navi Mumbai, India. Open to fintech, financial analysis, investment research, and automation-focused roles.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Adarsh Shinde" }],
   openGraph: {
-    title: "Adarsh Shinde — Finance, Research & AI Automation",
+    title: "Adarsh Shinde: Finance, Research and AI Automation",
     description:
       "MBA Finance professional combining domain expertise with AI-enabled execution. Equity research, SAP FICO, quantitative research, and workflow automation.",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adarsh Shinde — Finance, Research & AI Automation",
+    title: "Adarsh Shinde: Finance, Research and AI Automation",
     description:
       "Finance professional with equity research, SAP FICO, and AI workflow automation experience.",
   },
@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={ibmPlexSans.variable} suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#050a14" />
+        <meta name="theme-color" content="#05070A" />
       </head>
       <body className={ibmPlexSans.className}>{children}</body>
     </html>

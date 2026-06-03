@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #F8F9FC;
-  --color-foreground: #0f172a;
+  --color-canvas: #05070A;
+  --color-surface: #0D111A;
+  --color-card: #111827;
+  --color-gold: #D6B46A;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #AAB4C5;
+  --color-text-muted: #718096;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
 }
 
@@ -19,36 +24,56 @@ html {
 }
 
 body {
-  background-color: #F8F9FC;
-  color: #0f172a;
+  background-color: #05070A;
+  color: #F8FAFC;
   font-family: "IBM Plex Sans", system-ui, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: rgba(13, 148, 136, 0.15);
-  color: #0f172a;
+  background-color: rgba(34, 211, 238, 0.2);
+  color: #F8FAFC;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #05070A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(34, 211, 238, 0.2);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(34, 211, 238, 0.4);
 }
 
 :focus-visible {
-  outline: 2px solid rgba(37, 99, 235, 0.6);
+  outline: 2px solid rgba(34, 211, 238, 0.6);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+@keyframes draw-chart {
+  from { stroke-dashoffset: 700; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-signal {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.5); }
+}
+
+.animate-draw-chart {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: draw-chart 2.8s ease-out 1.2s forwards;
+}
+
+.animate-pulse-signal {
+  animation: pulse-signal 2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,5 +83,8 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .animate-draw-chart {
+    stroke-dashoffset: 0;
   }
 }
